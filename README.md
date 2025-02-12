@@ -3,7 +3,10 @@
 Implements and extend the capability of the bin packing formulation in "Models and bounds for two-dimensional level packing problems", by Lodi A, Martello S, Vigo D, Journal of
 Combinatorial Optimization 8:363–379, 2004.
 
-The problem corresponds to a 2-dimensional bin packing problem by levels: it assumes that items and bins are rectangular, that items need to be packed in non-overlapping levels, and that rotation of the items is not allowed. This basic model is extended by allowing constraints that restrict items to be in the same level or the same bin in the final solution.
+The problem corresponds to a 2-dimensional bin packing problem by levels: it assumes that items and bins are rectangular, that items need to be packed in non-overlapping levels, and that rotation of the items is not allowed. This basic model is extended by:
+- Adding different types of bins and associated costs.
+- Allowing constraints that restrict items to be in the same level or the same bin in the final solution.
+- Allowing constraints to restrict items to a specific type of bin.
 
 All the code is formulated in Python and uses Gurobi as solver.
 
