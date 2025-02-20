@@ -23,13 +23,13 @@ The code has been tested in a MacBook Pro with 2.3 GHz 8-Core Intel Core i9 and 
 	
 
 ## Author
-Juan S. Campos
+---------------------
 
 ## License
 All the codes are released under the MIT License. Please refer to the LICENSE file for details.
 
 ## Acknowledgements
-The NHM Unlocked project is generously enabled through a substantial £201m investment from the UK Government as part of its priority to increase investment in science, research and development. 
+--------------------- 
 
 ## References
 - Lodi A, Martello S, Vigo D (2004) Models and bounds for two-dimensional level packing problems. Journal of
