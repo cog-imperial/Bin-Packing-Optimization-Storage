@@ -23,13 +23,11 @@ The code has been tested in a MacBook Pro with 2.3 GHz 8-Core Intel Core i9 and 
 	
 
 ## Author
----------------------
+Juan S. Campos
 
 ## License
 All the codes are released under the MIT License. Please refer to the LICENSE file for details.
 
-## Acknowledgements
---------------------- 
 
 ## References
 - Lodi A, Martello S, Vigo D (2004) Models and bounds for two-dimensional level packing problems. Journal of
