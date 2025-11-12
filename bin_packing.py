@@ -305,8 +305,8 @@ class bin_packing:
         for set_shared in self.shared_bin:  
             big_M = len(set_shared)
             sorted_set = sorted(set_shared)  
-            i = sorted_set[0]
-            idx_aux = [(i,j) for i in range(1, i + 1) for j in bins_keys]
+            i_min = sorted_set[0]
+            idx_aux = [(i,j) for i in range(1, i_min + 1) for j in bins_keys]
             self.binary_shared[count] = self.model.addVars(idx_aux, vtype = GRB.BINARY, name = f'shared_bin_var_{i}')            
             self.model.addConstrs((self.x[(l, j, b)] <= self.z[(k, l, b)] + 1 - self.binary_shared[count][(k,b)] for k,b in idx_aux for j in sorted_set for l in range(k, j + 1)), f'shared_bin_{i}')
             
