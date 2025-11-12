@@ -314,7 +314,7 @@ class bin_packing:
             
             self.model.addConstrs((gp.quicksum(self.x[(l,j,b)]  for l in range(1, k) for j in sorted_set for b in bins_keys) <= big_M*(1 - gp.quicksum(self.binary_shared[count][(k,b)] for b in bins_keys)) for k in range(2, sorted_set[0] + 1)), name = f'shared_level_bin_{i}')
             
-            self.model.addConstr(gp.quicksum(self.binary_shared[count][(k, b)] for k in range(1, i + 1) for b in bins_keys) == 1, name = f'binary_shared_eq_1_{i}')
+            self.model.addConstr(gp.quicksum(self.binary_shared[count][(k, b)] for k in range(1, i_min + 1) for b in bins_keys) == 1, name = f'binary_shared_eq_1_{i}')
             count += 1
      
     def create_constraints_valid_bin(self):
