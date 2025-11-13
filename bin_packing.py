@@ -307,14 +307,14 @@ class bin_packing:
             sorted_set = sorted(set_shared)  
             i_min = sorted_set[0]
             idx_aux = [(i,j) for i in range(1, i_min + 1) for j in bins_keys]
-            self.binary_shared[count] = self.model.addVars(idx_aux, vtype = GRB.BINARY, name = f'shared_bin_var_{i}')            
-            self.model.addConstrs((self.x[(l, j, b)] <= self.z[(k, l, b)] + 1 - self.binary_shared[count][(k,b)] for k,b in idx_aux for j in sorted_set for l in range(k, j + 1)), f'shared_bin_{i}')
+            self.binary_shared[count] = self.model.addVars(idx_aux, vtype = GRB.BINARY, name = f'shared_bin_var_{i_min}')            
+            self.model.addConstrs((self.x[(l, j, b)] <= self.z[(k, l, b)] + 1 - self.binary_shared[count][(k,b)] for k,b in idx_aux for j in sorted_set for l in range(k, j + 1)), f'shared_bin_{i_min}')
             
-            self.model.addConstrs((gp.quicksum(self.x[(l,j,b)] for j in sorted_set for l in range(k, j+1))  <= big_M*(1 - self.binary_shared[count][(k,curr_bin)]) for curr_bin in bins_keys for b in bins_keys if b != curr_bin for k in range(1,sorted_set[0] +1)), name = f'shared_bin_type_{i}')
+            self.model.addConstrs((gp.quicksum(self.x[(l,j,b)] for j in sorted_set for l in range(k, j+1))  <= big_M*(1 - self.binary_shared[count][(k,curr_bin)]) for curr_bin in bins_keys for b in bins_keys if b != curr_bin for k in range(1,sorted_set[0] +1)), name = f'shared_bin_type_{i_min}')
             
-            self.model.addConstrs((gp.quicksum(self.x[(l,j,b)]  for l in range(1, k) for j in sorted_set for b in bins_keys) <= big_M*(1 - gp.quicksum(self.binary_shared[count][(k,b)] for b in bins_keys)) for k in range(2, sorted_set[0] + 1)), name = f'shared_level_bin_{i}')
+            self.model.addConstrs((gp.quicksum(self.x[(l,j,b)]  for l in range(1, k) for j in sorted_set for b in bins_keys) <= big_M*(1 - gp.quicksum(self.binary_shared[count][(k,b)] for b in bins_keys)) for k in range(2, sorted_set[0] + 1)), name = f'shared_level_bin_{i_min}')
             
-            self.model.addConstr(gp.quicksum(self.binary_shared[count][(k, b)] for k in range(1, i_min + 1) for b in bins_keys) == 1, name = f'binary_shared_eq_1_{i}')
+            self.model.addConstr(gp.quicksum(self.binary_shared[count][(k, b)] for k in range(1, i_min + 1) for b in bins_keys) == 1, name = f'binary_shared_eq_1_{i_min}')
             count += 1
      
     def create_constraints_valid_bin(self):
